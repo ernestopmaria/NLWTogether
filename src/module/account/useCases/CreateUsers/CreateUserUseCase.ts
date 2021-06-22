@@ -1,6 +1,7 @@
 import {inject,injectable} from "tsyringe"
-import { IUsersDTO } from "../dtos/IUsersDTO";
-import { IUsersRepository } from "../repositories/IUsersRepository";
+import { IUsersDTO } from "../../dtos/IUsersDTO"
+import { IUsersRepository } from "../../repositories/IUsersRepository"
+
 
 
 @injectable()

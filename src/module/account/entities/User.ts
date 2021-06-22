@@ -6,7 +6,7 @@ import {v4 as uuidV4} from 'uuid'
 class User{
 
   @PrimaryColumn("uuid")
-  id?:string
+  readonly id:string
 
 @Column()
   name:string
