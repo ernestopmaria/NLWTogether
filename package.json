@@ -1,0 +1,8 @@
+{
+  "name": "NLWTogether",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ernestopmaria/NLWTogether.git",
+  "author": "Ernesto Maria <58423237+ernestopmaria@users.noreply.github.com>",
+  "license": "MIT"
+}
