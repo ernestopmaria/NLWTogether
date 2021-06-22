@@ -13,8 +13,14 @@ class CreateUserUseCase{
     private userRepository: IUsersRepository){}
 
   async execute({email,name,admin}:IUsersDTO):Promise<void>{
-  await this.userRepository.create({email,name,admin})
-  return
+    const userExists = this.userRepository.findByEmail(email)
+     if(userExists){
+       throw new Error("This email is already in use!")
+     }
+  
+
+      await this.userRepository.create({email,name,admin})
+
   }
   
 }
