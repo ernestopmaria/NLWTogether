@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs"
 import {inject,injectable} from "tsyringe"
 import { AppError } from "../../../../shared/AppError/AppError"
 import { IUsersDTO } from "../../dtos/IUsersDTO"
@@ -22,8 +23,8 @@ class CreateUserUseCase{
        throw new AppError("This email is already in use!",400)
      }
   
-
-      await this.userRepository.create({email,name,admin,password})
+     const passwordHash = await hash(password,8)
+      await this.userRepository.create({email,name,admin,password:passwordHash})
       return
 
   }
