@@ -13,7 +13,7 @@ class CreateUserUseCase{
     @inject("UsersRepository")
     private userRepository: IUsersRepository){}
 
-  async execute({email,name,admin}:IUsersDTO):Promise<void>{
+  async execute({email,name,admin,password}:IUsersDTO):Promise<void>{
     const userExists = await this.userRepository.findByEmail(email)
     if(!email){
       throw new AppError("Incorrect email!",400)
@@ -23,7 +23,7 @@ class CreateUserUseCase{
      }
   
 
-      await this.userRepository.create({email,name,admin})
+      await this.userRepository.create({email,name,admin,password})
       return
 
   }

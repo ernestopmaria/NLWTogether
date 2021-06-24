@@ -8,9 +8,10 @@ class TagRepositories implements ITagRepository {
   constructor()
   { this.repository=getRepository(Tag)} 
 
-  async create(name: string,id:string): Promise<void> {
+  async create(name: string,id:string): Promise<Tag> {
    const tag =  this.repository.create({name,id});
-    await this.repository.save(tag)
+    const tagName =await this.repository.save(tag)
+    return tagName  
   }
  async list(): Promise<Tag[]> {
    const tags = await this.repository.find();
@@ -18,8 +19,9 @@ class TagRepositories implements ITagRepository {
 
   }
   async findByName(name: string): Promise<Tag> {
-    const tag = await this.repository.findOne({name})
+     const tag= await this.repository.findOne({name})
     return tag
+   
   }
   
 }

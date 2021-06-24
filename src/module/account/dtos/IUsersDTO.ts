@@ -2,6 +2,7 @@ interface IUsersDTO{
   id?:string,
   name:string,
   email:string,
-  admin:boolean
+  admin:boolean,
+  password:string
 }
 export { IUsersDTO}

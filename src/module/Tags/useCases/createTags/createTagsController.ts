@@ -8,9 +8,9 @@ class CreateTagsController{
   async handle(request:Request, response:Response):Promise<Response>{
     const {name}= request.body
     const createTagsUseCase = container.resolve(CreateTagsUseCase)
-    await createTagsUseCase.execute(name)
+    const tag = await createTagsUseCase.execute(name)
 
-    return response.status(201).send()
+    return response.json(tag)
     
 
   }

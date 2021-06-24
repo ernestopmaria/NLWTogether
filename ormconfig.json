@@ -5,6 +5,7 @@
   "username": "postgres",
   "password": "ignite",
   "database": "nlwt",
+  "synchronize": false,
   "migrations": ["./src/database/migrations/*.ts"],
   "entities": ["./src/module/**/entities/*.ts"],
     "cli": {
