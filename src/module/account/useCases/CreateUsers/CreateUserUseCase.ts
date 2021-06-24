@@ -1,4 +1,5 @@
 import {inject,injectable} from "tsyringe"
+import { AppError } from "../../../../shared/AppError/AppError"
 import { IUsersDTO } from "../../dtos/IUsersDTO"
 import { IUsersRepository } from "../../repositories/IUsersRepository"
 
@@ -13,13 +14,12 @@ class CreateUserUseCase{
     private userRepository: IUsersRepository){}
 
   async execute({email,name,admin}:IUsersDTO):Promise<void>{
-    if(!email){
-      throw new Error("Incorrect email!")
-    }
     const userExists = await this.userRepository.findByEmail(email)
-     
+    if(!email){
+      throw new AppError("Incorrect email!",400)
+    }
     if(userExists){
-       throw new Error("This email is already in use!")
+       throw new AppError("This email is already in use!",400)
      }
   
 
