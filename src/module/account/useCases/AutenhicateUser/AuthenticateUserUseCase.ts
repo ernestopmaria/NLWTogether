@@ -2,7 +2,6 @@ import { compare } from "bcryptjs"
 import {sign} from 'jsonwebtoken'
 import { inject, injectable } from "tsyringe"
 import { AppError } from "../../../../shared/AppError/AppError"
-import { User } from "../../entities/User"
 import { IUsersRepository } from "../../repositories/IUsersRepository"
 
 
