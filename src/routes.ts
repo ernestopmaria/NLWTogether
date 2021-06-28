@@ -22,7 +22,7 @@ const listTagsController = new ListTagsController()
 const router = Router()
 router.use(express.json())
 
-router.get("/users", lisUsersController.handle)
+router.get("/users",ensureAuthenticate, lisUsersController.handle)
 router.get("/compliments/send",ensureAuthenticate, listComplimentsController.handle)
 router.get("/compliments/received",ensureAuthenticate, lisReceivedCompliments.handle)
 router.get("/tags",ensureAuthenticate, listTagsController.handle)
