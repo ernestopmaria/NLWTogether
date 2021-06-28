@@ -8,7 +8,7 @@ class ComplimentsRepository implements IComplimentsRepository{
   constructor(){
     this.repository=getRepository(Compliments)
   }
-  async create({ message, tag_id, user_receiver,user_sender}: IComplimentRequest){
+  async create({ message, tag_id, user_receiver,user_sender}: IComplimentRequest):Promise<Compliments>{
     const compliment = this.repository.create({
       message,
       user_receiver,
@@ -16,8 +16,24 @@ class ComplimentsRepository implements IComplimentsRepository{
       user_sender
 
       })
-   await this.repository.save(compliment)
+  const compliments = await this.repository.save(compliment)
+
+  return compliments
    
+  }
+
+  async listComplimentsSent(user_sender:string): Promise<Compliments[]> {
+    const compliments = this.repository.createQueryBuilder()
+      .select("compliments").from(Compliments, "compliments").where("compliments.user_sender = :user_sender", { user_sender}).getMany()
+    return compliments
+
+  }
+
+  async listComplimentsReceived(user_receiver:string): Promise<Compliments[]> {
+    const compliments = this.repository.createQueryBuilder()
+      .select("compliments").from(Compliments, "compliments").where("compliments.user_receiver = :user_receiver", { user_receiver}).getMany()
+    return compliments
+
   }
 
 
