@@ -10,7 +10,6 @@ class ListReceivedComplimentsController{
 
    const listComplimentUseCase = container.resolve(ListReceivedComplimentsUseCase)
    const listCompliment = await listComplimentUseCase.execute(user_id)
-
    return response.json(listCompliment)
 
  }

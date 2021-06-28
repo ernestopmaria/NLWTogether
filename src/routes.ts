@@ -22,7 +22,7 @@ router.use(express.json())
 
 router.get("/users", lisUsersController.handle)
 router.get("/compliments/send",ensureAuthenticate, listComplimentsController.handle)
-router.get("compliments/received",ensureAuthenticate, lisReceivedCompliments.handle)
+router.get("/compliments/received",ensureAuthenticate, lisReceivedCompliments.handle)
 
 router.post("/user", createUserController.handle )
 router.post("/session", authenticateController.handle )

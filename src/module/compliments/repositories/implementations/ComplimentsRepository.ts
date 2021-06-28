@@ -23,15 +23,18 @@ class ComplimentsRepository implements IComplimentsRepository{
   }
 
   async listComplimentsSent(user_sender:string): Promise<Compliments[]> {
-    const compliments = this.repository.createQueryBuilder()
-      .select("compliments").from(Compliments, "compliments").where("compliments.user_sender = :user_sender", { user_sender}).getMany()
+    const compliments = await this.repository.find({
+      where:{user_sender},
+      relations:["tag","userReceiver"]
+    })
     return compliments
-
   }
 
   async listComplimentsReceived(user_receiver:string): Promise<Compliments[]> {
-    const compliments = this.repository.createQueryBuilder()
-      .select("compliments").from(Compliments, "compliments").where("compliments.user_receiver = :user_receiver", { user_receiver}).getMany()
+    const compliments = await this.repository.find({
+      where:{user_receiver},
+      relations:["tag","userSender"]
+    })
     return compliments
 
   }
