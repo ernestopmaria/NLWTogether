@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../../account/repositories/IUsersRepository";
-import { IComplimentsRepository } from "../complimentsRepository/IComplimentsRepository";
+import { IComplimentsRepository } from "../repositories/IComplimentsRepository";
 import { Compliments } from "../entities/Compliments";
 
 

@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../shared/AppError/AppError";
 import { IUsersRepository } from "../../account/repositories/IUsersRepository";
-import { IComplimentRequest, IComplimentsRepository } from "../complimentsRepository/IComplimentsRepository";
+import { IComplimentRequest, IComplimentsRepository } from "../repositories/IComplimentsRepository";
 import { Compliments } from "../entities/Compliments";
 
 

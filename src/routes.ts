@@ -3,8 +3,8 @@ import { AuthenticateUserController } from "./module/account/useCases/Autenhicat
 import { CreateUserController } from "./module/account/useCases/CreateUsers/CreateUserController"
 import { ListUsersController } from "./module/account/useCases/listUsers/listUsersController"
 import { CreateComplimentController } from "./module/compliments/useCases/CreateComplimentController"
-import { ListComplimentsController } from "./module/compliments/useCases/ListComplimentsController"
 import { ListReceivedComplimentsController } from "./module/compliments/useCases/ListReceivedComplimentsController"
+import { ListSendComplimentsController } from "./module/compliments/useCases/ListSendComplimentsController"
 import { CreateTagsController } from "./module/Tags/useCases/createTags/createTagsController"
 import { ensureAdmin } from "./shared/middlewares/ensureAdmin"
 import { ensureAuthenticate } from "./shared/middlewares/ensureAuthenticate"
@@ -13,7 +13,7 @@ const createUserController = new CreateUserController()
 const lisUsersController = new ListUsersController()
 const createComplimentsController = new CreateComplimentController()
 
-const listComplimentsController = new ListComplimentsController()
+const listComplimentsController = new ListSendComplimentsController()
 const lisReceivedCompliments = new ListReceivedComplimentsController()
 
 const createTagsController = new CreateTagsController()

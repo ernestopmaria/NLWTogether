@@ -1,12 +1,11 @@
 import { inject, injectable } from "tsyringe";
-import { IUsersRepository } from "../../account/repositories/IUsersRepository";
-import { IComplimentsRepository } from "../complimentsRepository/IComplimentsRepository";
+import { IComplimentsRepository } from "../repositories/IComplimentsRepository";
 import { Compliments } from "../entities/Compliments";
 
 
 
 @injectable()
-class ListComplimentsByUser{
+class ListSendComplimentsUseCase{
   constructor(
     @inject("ComplimentsRepository")
     private complimentRepository: IComplimentsRepository,
@@ -14,10 +13,11 @@ class ListComplimentsByUser{
 
   async execute(user_sender:string):Promise<Compliments[]>{
     const listCompliment = await this.complimentRepository.listComplimentsSent(user_sender)
+
     return listCompliment
   }
 
 
 }
 
-export {ListComplimentsByUser}
+export {ListSendComplimentsUseCase}
