@@ -6,6 +6,7 @@ import { CreateComplimentController } from "./module/compliments/useCases/Create
 import { ListReceivedComplimentsController } from "./module/compliments/useCases/ListReceivedComplimentsController"
 import { ListSendComplimentsController } from "./module/compliments/useCases/ListSendComplimentsController"
 import { CreateTagsController } from "./module/Tags/useCases/createTags/createTagsController"
+import { ListTagsController } from "./module/Tags/useCases/listTags/listTagsController"
 import { ensureAdmin } from "./shared/middlewares/ensureAdmin"
 import { ensureAuthenticate } from "./shared/middlewares/ensureAuthenticate"
 
@@ -16,6 +17,7 @@ const listComplimentsController = new ListSendComplimentsController()
 const lisReceivedCompliments = new ListReceivedComplimentsController()
 const createTagsController = new CreateTagsController()
 const authenticateController = new AuthenticateUserController()
+const listTagsController = new ListTagsController()
 
 const router = Router()
 router.use(express.json())
@@ -23,6 +25,7 @@ router.use(express.json())
 router.get("/users", lisUsersController.handle)
 router.get("/compliments/send",ensureAuthenticate, listComplimentsController.handle)
 router.get("/compliments/received",ensureAuthenticate, lisReceivedCompliments.handle)
+router.get("/tags", listTagsController.handle)
 
 router.post("/user", createUserController.handle )
 router.post("/session", authenticateController.handle )

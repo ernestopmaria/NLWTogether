@@ -25,7 +25,7 @@ class ComplimentsRepository implements IComplimentsRepository{
   async listComplimentsSent(user_sender:string): Promise<Compliments[]> {
     const compliments = await this.repository.find({
       where:{user_sender},
-      relations:["tag","userReceiver"]
+      relations:["tag","userSender","userReceiver"]
     })
     return compliments
   }
@@ -33,7 +33,7 @@ class ComplimentsRepository implements IComplimentsRepository{
   async listComplimentsReceived(user_receiver:string): Promise<Compliments[]> {
     const compliments = await this.repository.find({
       where:{user_receiver},
-      relations:["tag","userSender"]
+      relations:["tag","userSender","userReceiver"]
     })
     return compliments
 
